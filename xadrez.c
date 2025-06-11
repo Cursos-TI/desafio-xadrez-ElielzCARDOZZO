@@ -1,67 +1,65 @@
 #include <stdio.h>
 
+// USO DAS FUNÇÕES RECURSIVAS PARA A TORRE, BISCO, CAVALO E RAINHA
+void moverTorre(int casas) {
+    if (casas > 0) {
+        printf("\nMoveu-se para a DIREITA!\n"); //MENSAGEM DE EXIBIÇÃO DO MOVIMENTO DA PEÇA 
+        moverTorre(casas - 1);
+    }
+}
+
+// FUNÇÃO RECURSIVA COM LOOPS ANINHADO
+void moverBispo(int casas) {
+    if (casas > 0) {
+        for (int i = 1; i < casas; i++) {
+            printf("\nMoveu-se para CIMA!\n"); //MENSAGEM DE EXIBIÇÃO DO MOVIMENTO DA PEÇA 
+            for (int j = 1; j < casas; j++) {
+                printf("\nMoveu-se para DIREITA!\n"); //MENSAGEM DE EXIBIÇÃO DO MOVIMENTO DA PEÇA 
+            }
+        }
+        moverBispo(casas - 2); 
+    }
+}
+
+// FUNÇÃO RECURSIVA 
+void moverRainha(int casas) {
+    if (casas > 0) {
+        printf("\nMoveu-se para a ESQUERDA!\n"); //MENSAGEM DE EXIBIÇÃO DO MOVIMENTO DA PEÇA 
+        moverRainha(casas - 1);
+    }
+}
+
+// FUNÇÃO RECURSIVA COM LOOPS COMPLEXOS 
+void moverCavalo(int casas) {
+    int movimento1 = 2;
+    int movimento2 = 1;
+    int i,j;
+
+    for (i = 0, j = 0; i <= movimento1 || j <= movimento2; i++, j++)
+        if (i < movimento1){
+            printf("\nMoveu-se para CIMA!\n"); //MENSAGEM DE EXIBIÇÃO DO MOVIMENTO DA PEÇA 
+        }
+
+        if (movimento2 < j){
+            printf("\nMoveu-se para DIREITA!\n"); //MENSAGEM DE EXIBIÇÃO DO MOVIMENTO DA PEÇA 
+        }
+    }
+   
+
 int main() {
+    printf("*** DESAFIO DAS PEÇAS DE XADREZ EM C *** \n"); //PRINTAGEM DO TÍTULO 
 
-    // DECLARAÇÃO DA VARIÁVEL E SEU VALOR 
-    int i = 0;
+    printf("\nA TORRE:\n"); //NOMENCLATURA DE CADA PEÇA
+    moverTorre(5);
 
-    // TÍTULO DO DESAFIO DAS PEÇAS DE XADREZ
-    printf("*** DESAFIO DAS PEÇAS DE XADREZ EM C *** \n\n");
+    printf("\nO BISPO:\n"); //NOMENCLATURA DE CADA PEÇA
+    moverBispo(3); 
 
-    
-    // UTILIZAÇÃO DAS ESTRUTURA DE REPETIÇÃO FOR PARA A TORRE
-    printf("A TORRE: \n");
-    for (int j = 0; j < 5; j++) {
-        printf("A TORRE moveu-se para a DIREITA!\n");
-    }
+    printf("\nA RAINHA:\n"); //NOMENCLATURA DE CADA PEÇA
+    moverRainha(8);
 
+    printf("\nO CAVALO:\n"); //NOMENCLATURA DE CADA PEÇA
+    moverCavalo(1);
 
-    // UTILIZAÇÃO DAS ESTRUTURA DE REPETIÇÃO WHILE E SUA CONDICIONAL VERDADEIRA PARA A TORRE
-    printf("\n O BISPO: \n");
-    while (i < 5) {
-        printf("O BISPO moveu-se para a CIMA, DIREITA (DIAGONAL)!\n");
-        i++;
-    }
-
-    // DECLARANDO O INDÍCE NOVAMENTE POIS O SEU CONTADOR SERIA A PARTIR DO 5, NA ÚLTIMA LINHA DE COMANDO
-    i = 0;
-
-    // UTILIZAÇÃO DAS ESTRUTURA DE REPETIÇÃO DO-WHILE E SUA CONDICIONAL
-    printf("\n A RAINHA: \n");
-    do {
-        printf("A RAINHA moveu-se para a ESQUERDA!\n\n");
-        i++;
-    } while (i < 8);
-
-
-    // IMPLEMENTAÇÃO DA PEÇA CAVALO NO CÓDIGO EM C, ADICIONANDO DUAS CASAS A BAIXO E UMA A ESQUERDA ---
-    // (DE ACORDO COM O DESAFIO DO NÍVEL AVENTUREIRO)
-    printf("MOVIMENTAÇÃO DA PEÇA DE XADREZ: C A V A L O ! ! !\n");
-
-        for (i = 0; i < 2; i++) //ESTRUTURA DE REPETIÇÃO FOR USADO PARA REPETIR DUAS CASAS ABAIXO
-        {
-            printf("BAIXO!\n"); //VISUALIZAÇÃO DA MENSAGEM DE LOMOCOMOÇÃO DA PEÇA CAVALO
-
-            while (i == 1) //ESTRUTURA DE REPETIÇÃO WHILE USADO PARA REPETIR UMA CASA A ESQUERDA
-            {
-                printf("ESQUERDA!\n\n"); //VISUALIZAÇÃO DA MENSAGEM DE LOMOCOMOÇÃO DA PEÇA CAVALO
-                i++; 
-            }
-            
-        }
-
-                printf("--------------------------------------------------------------------------------\n");
-
-        for (i = 0; i < 2; i++) //ESTRUTURA DE REPETIÇÃO FOR USADO PARA REPETIR DUAS CASAS PARA CIMA
-        {
-            printf("CIMA!\n"); //VISUALIZAÇÃO DA MENSAGEM DE LOMOCOMOÇÃO DA PEÇA CAVALO
-
-            while (i == 1) //ESTRUTURA DE REPETIÇÃO WHILE USADO PARA REPETIR UMA CASA A DIREITA
-            {
-                printf("DIREITA!\n"); //VISUALIZAÇÃO DA MENSAGEM DE LOMOCOMOÇÃO DA PEÇA CAVALO
-                i++; 
-            }
-            
-        }
     return 0;
 }
